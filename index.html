@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Social Media Elements</title>
+    <style>
+        /* Định hình phông nền tối để làm nổi bật hiệu ứng nháy 7 màu */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            gap: 25px;
+        }
+
+        /* -----------------------------------------
+           KHU VỰC KHUNG PROFILE NHÁY MÀU RIÊNG 
+        -------------------------------------------- */
+        .profile-card {
+            width: 380px;
+            padding: 30px;
+            background-color: #222222;
+            border-radius: 20px;
+            text-align: center;
+            color: #ffffff;
+            box-sizing: border-box;
+            /* Tạo viền nháy 7 màu độc lập cho Profile */
+            border: 6px solid transparent;
+            animation: rainbowProfile 4s linear infinite; 
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #444444;
+            margin: 0 auto 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            border: 3px solid #ffffff;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .profile-bio {
+            font-size: 14px;
+            color: #aaaaaa;
+            margin: 0;
+        }
+
+        /* Hiệu ứng nháy 7 màu riêng biệt cho Khung Profile (Chạy chậm mượt hơn) */
+        @keyframes rainbowProfile {
+            0%   { border-color: #ff0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
+            14%  { border-color: #ff7f00; box-shadow: 0 0 25px rgba(255, 127, 0, 0.6); }
+            28%  { border-color: #ffff00; box-shadow: 0 0 25px rgba(255, 255, 0, 0.6); }
+            42%  { border-color: #00ff00; box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); }
+            57%  { border-color: #0000ff; box-shadow: 0 0 25px rgba(0, 0, 255, 0.6); }
+            71%  { border-color: #4b0082; box-shadow: 0 0 25px rgba(75, 0, 130, 0.6); }
+            85%  { border-color: #9400d3; box-shadow: 0 0 25px rgba(148, 0, 211, 0.6); }
+            100% { border-color: #ff0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
+        }
+
+        /* -----------------------------------------
+           KHU VỰC CÁC Ô MẠNG XÃ HỘI
+        -------------------------------------------- */
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .box {
+            width: 110px;
+            height: 110px;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: 4px solid transparent; 
+            /* Gắn hiệu ứng nháy 7 màu liên tục cho các ô (Tốc độ nhanh hơn profile) */
+            animation: rainbowBoxes 2.5s linear infinite;
+            transition: transform 0.3s;
+        }
+
+        .box:hover {
+            transform: scale(1.08);
+        }
+
+        /* Hiệu ứng nháy 7 màu của các ô MXH */
+        @keyframes rainbowBoxes {
+            0%   { border-color: #ff0000; box-shadow: 0 0 12px #ff0000; }
+            14%  { border-color: #ff7f00; box-shadow: 0 0 12px #ff7f00; }
+            28%  { border-color: #ffff00; box-shadow: 0 0 12px #ffff00; }
+            42%  { border-color: #00ff00; box-shadow: 0 0 12px #00ff00; }
+            57%  { border-color: #0000ff; box-shadow: 0 0 12px #0000ff; }
+            71%  { border-color: #4b0082; box-shadow: 0 0 12px #4b0082; }
+            85%  { border-color: #9400d3; box-shadow: 0 0 12px #9400d3; }
+            100% { border-color: #ff0000; box-shadow: 0 0 12px #ff0000; }
+        }
+
+        /* Nút phát nhạc */
+        .music-btn {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+            animation: rainbowBoxes 3s linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- KHUNG PROFILE RIÊNG BIỆT -->
+    <div class="profile-card">
+        <!-- Thay thế bằng ảnh của bạn ở thuộc tính src nếu muốn -->
+        <div class="profile-avatar">👤</div>
+        <h2 class="profile-name">Tên Của Bạn</h2>
+        <p class="profile-bio">Chào mừng bạn đến với góc nhỏ của tôi!</p>
+    </div>
+
+    <!-- KHU VỰC CÁC Ô MẠNG XÃ HỘI TÁCH RIÊNG -->
+    <div class="container">
+        <a href="#" class="box" target="_blank">TikTok</a>
+        <a href="#" class="box" target="_blank">Zalo</a>
+        <a href="#" class="box" target="_blank">Facebook</a>
+    </div>
+
+    <!-- NÚT PHÁT ĐOẠN NHẠC YÊU CẦU -->
+    <button class="music-btn" onclick="playSongSegment()">🎵 Bật Nhạc Hẹn Ngày Mai Yêu</button>
+
+    <!-- Trình phát nhạc ẩn xử lý đoạn thời gian yêu cầu -->
+    <audio id="bg-music" src="https://soundhelix.com"></audio>
+
+    <script>
+        function playSongSegment() {
+            const audio = document.getElementById('bg-music');
+            
+            // Nhắc lại: Bạn đổi đường dẫn src ở trên thành tên file nhạc máy bạn nếu muốn nghe đúng bài gốc nhé
+            const startTime = 68; // Bắt đầu: "Một ngày em về..."
+            const endTime = 95;   // Kết thúc: "...em chưa hề thương nhớ"
+
+            audio.currentTime = startTime;
+            audio.play();
+
+            audio.addEventListener('timeupdate', function() {
+                if (audio.currentTime >= endTime) {
+                    audio.pause();
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
