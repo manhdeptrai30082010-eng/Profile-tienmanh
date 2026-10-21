@@ -3,175 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile & Social Media Elements</title>
+    <title>Phạm Tiến Mạnh - Official Space</title>
     <style>
-        /* Định hình phông nền tối để làm nổi bật hiệu ứng nháy 7 màu */
+        /* Tối ưu hóa toàn màn hình rộng rãi, bối cảnh Anime Cyberpunk góc rộng */
         body {
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
+            background-image: url('https://pinimg.com');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
-            gap: 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
 
-        /* -----------------------------------------
-           KHU VỰC KHUNG PROFILE NHÁY MÀU RIÊNG 
-        -------------------------------------------- */
-        .profile-card {
-            width: 380px;
-            padding: 30px;
-            background-color: #222222;
-            border-radius: 20px;
+        /* Khung giao diện App rộng rãi (Giao diện ngang sang trọng) */
+        .app-space {
+            width: 90%;
+            max-width: 850px;
+            min-height: 420px;
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            display: flex;
+            flex-wrap: wrap; /* Tự động co giãn mượt mà trên điện thoại */
+            padding: 40px;
+            box-sizing: border-box;
+            gap: 40px;
+            align-items: center;
+            /* Hệ thống viền nháy LED 7 màu độc lập bao quanh App */
+            border: 5px solid transparent;
+            animation: appLED 4s linear infinite;
+        }
+
+        /* PHẦN TRÁI: Hồ sơ cá nhân nổi bật */
+        .profile-side {
+            flex: 1;
+            min-width: 250px;
             text-align: center;
-            color: #ffffff;
-            box-sizing: border-box;
-            /* Tạo viền nháy 7 màu độc lập cho Profile */
-            border: 6px solid transparent;
-            animation: rainbowProfile 4s linear infinite; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
+        /* Avatar Anime của bạn phóng to rõ nét */
+        .avatar-huge {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background-color: #444444;
-            margin: 0 auto 15px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 40px;
-            border: 3px solid #ffffff;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
-        .profile-name {
-            font-size: 24px;
-            margin: 0 0 8px 0;
-            font-weight: bold;
-            letter-spacing: 1px;
+        .avatar-huge:hover {
+            transform: scale(1.05) rotate(5deg);
         }
 
-        .profile-bio {
-            font-size: 14px;
-            color: #aaaaaa;
-            margin: 0;
-        }
-
-        /* Hiệu ứng nháy 7 màu riêng biệt cho Khung Profile (Chạy chậm mượt hơn) */
-        @keyframes rainbowProfile {
-            0%   { border-color: #ff0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
-            14%  { border-color: #ff7f00; box-shadow: 0 0 25px rgba(255, 127, 0, 0.6); }
-            28%  { border-color: #ffff00; box-shadow: 0 0 25px rgba(255, 255, 0, 0.6); }
-            42%  { border-color: #00ff00; box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); }
-            57%  { border-color: #0000ff; box-shadow: 0 0 25px rgba(0, 0, 255, 0.6); }
-            71%  { border-color: #4b0082; box-shadow: 0 0 25px rgba(75, 0, 130, 0.6); }
-            85%  { border-color: #9400d3; box-shadow: 0 0 25px rgba(148, 0, 211, 0.6); }
-            100% { border-color: #ff0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
-        }
-
-        /* -----------------------------------------
-           KHU VỰC CÁC Ô MẠNG XÃ HỘI
-        -------------------------------------------- */
-        .container {
-            display: flex;
-            gap: 20px;
-        }
-
-        .box {
-            width: 110px;
-            height: 110px;
-            background-color: #2a2a2a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 15px;
-            text-decoration: none;
+        /* Tên Phạm Tiến Mạnh nghệ thuật */
+        .name-display {
+            font-size: 28px;
             color: #ffffff;
-            font-weight: bold;
-            font-size: 16px;
-            box-sizing: border-box;
-            border: 4px solid transparent; 
-            /* Gắn hiệu ứng nháy 7 màu liên tục cho các ô (Tốc độ nhanh hơn profile) */
-            animation: rainbowBoxes 2.5s linear infinite;
-            transition: transform 0.3s;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        .box:hover {
-            transform: scale(1.08);
-        }
-
-        /* Hiệu ứng nháy 7 màu của các ô MXH */
-        @keyframes rainbowBoxes {
-            0%   { border-color: #ff0000; box-shadow: 0 0 12px #ff0000; }
-            14%  { border-color: #ff7f00; box-shadow: 0 0 12px #ff7f00; }
-            28%  { border-color: #ffff00; box-shadow: 0 0 12px #ffff00; }
-            42%  { border-color: #00ff00; box-shadow: 0 0 12px #00ff00; }
-            57%  { border-color: #0000ff; box-shadow: 0 0 12px #0000ff; }
-            71%  { border-color: #4b0082; box-shadow: 0 0 12px #4b0082; }
-            85%  { border-color: #9400d3; box-shadow: 0 0 12px #9400d3; }
-            100% { border-color: #ff0000; box-shadow: 0 0 12px #ff0000; }
-        }
-
-        /* Nút phát nhạc */
-        .music-btn {
-            padding: 12px 24px;
-            font-size: 15px;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(45deg, #ff007f, #7f00ff);
-            border: none;
-            border-radius: 25px;
+        /* Trình điều khiển âm nhạc thiết kế dạng thanh sóng */
+        .music-controller {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
-            animation: rainbowBoxes 3s linear infinite;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-controller:hover {
+            background: #ffffff;
+            color: #121212;
+            box-shadow: 0 0 15px #ffffff;
+        }
+
+        /* PHẦN PHẢI: Không gian các ô kết nối rộng rãi */
+        .links-side {
+            flex: 1.2;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Các ô mạng xã hội thiết kế rộng bản, thoáng mắt */
+        .mega-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 16px;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+            /* Mỗi ô mạng xã hội sở hữu một lớp nháy viền Neon riêng */
+            animation: neonBorders 3s linear infinite;
+            transition: all 0.3s ease;
+        }
+
+        .mega-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(8px);
+        }
+
+        /* Thiết kế khối chứa Logo và chữ bên trong ô */
+        .box-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Tối ưu ảnh logo ứng dụng gọn mắt */
+        .app-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .arrow-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .mega-box:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        /* Keyframes: Nháy LED chạy quanh viền App lớn */
+        @keyframes appLED {
+            0%   { border-color: #ff0055; box-shadow: 0 0 30px rgba(255, 0, 85, 0.5); }
+            14%  { border-color: #ff5500; box-shadow: 0 0 30px rgba(255, 85, 0, 0.5); }
+            28%  { border-color: #ffcc00; box-shadow: 0 0 30px rgba(255, 204, 0, 0.5); }
+            42%  { border-color: #00ff55; box-shadow: 0 0 30px rgba(0, 255, 85, 0.5); }
+            57%  { border-color: #00ccff; box-shadow: 0 0 30px rgba(0, 204, 255, 0.5); }
+            71%  { border-color: #5500ff; box-shadow: 0 0 30px rgba(85, 0, 255, 0.5); }
+            85%  { border-color: #cc00ff; box-shadow: 0 0 30px rgba(204, 0, 255, 0.5); }
+            100% { border-color: #ff0055; box-shadow: 0 0 30px rgba(255, 0, 85, 0.5); }
+        }
+
+        /* Keyframes: Nháy màu Neon mịn bao quanh các ô lựa chọn */
+        @keyframes neonBorders {
+            0%   { border-color: rgba(255, 0, 0, 0.4); }
+            25%  { border-color: rgba(0, 255, 0, 0.4); }
+            50%  { border-color: rgba(0, 0, 255, 0.4); }
+            75%  { border-color: rgba(255, 255, 0, 0.4); }
+            100% { border-color: rgba(255, 0, 0, 0.4); }
+        }
+
+        /* Responsive cho điện thoại di động */
+        @media (max-width: 680px) {
+            .app-space {
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+            .profile-side {
+                margin-bottom: 10px;
+            }
+            .links-side {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- KHUNG PROFILE RIÊNG BIỆT -->
-    <div class="profile-card">
-        <!-- Thay thế bằng ảnh của bạn ở thuộc tính src nếu muốn -->
-        <div class="profile-avatar">👤</div>
-        <h2 class="profile-name">Tên Của Bạn</h2>
-        <p class="profile-bio">Chào mừng bạn đến với góc nhỏ của tôi!</p>
+    <!-- KHÔNG GIAN BẢNG ĐIỀU KHIỂN APP RỘNG RÃI -->
+    <div class="app-space">
+        
+        <!-- BÊN TRÁI: THÔNG TIN PROFILE -->
+        <div class="profile-side">
+            <!-- Ảnh đại diện gốc từ Pinterest của bạn -->
+            <img class="avatar-huge" src="https://pinimg.com" alt="Avatar">
+            
+            <!-- Tên hiển thị -->
+            <div class="name-display">Phạm Tiến Mạnh</div>
+
+            <!-- Nút bật nhạc điều khiển đoạn điệp khúc -->
+            <button class="music-controller" id="music-node" onclick="toggleAppMusic()">🎵 Bật Nhạc Không Gian</button>
+        </div>
+
+        <!-- BÊN PHẢI: DANH SÁCH Ô LIÊN KẾT CÓ TÍCH HỢP LOGO APP -->
+        <div class="links-side">
+            <!-- Ô TikTok chính chủ có Logo -->
+            <a href="https://tiktok.com" class="mega-box" target="_blank">
+                <div class="box-content">
+                    <img class="app-logo" src="https://uxwing.com" alt="TikTok">
+                    <span>TikTok Profile</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+            
+            <!-- Ô Zalo có Logo -->
+            <a href="#" class="mega-box" target="_blank">
+                <div class="box-content">
+                    <img class="app-logo" src="https://wikimedia.org" alt="Zalo">
+                    <span>Zalo Connect</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+            
+            <!-- Ô Facebook chính chủ có Logo -->
+            <a href="https://facebook.com" class="mega-box" target="_blank">
+                <div class="box-content">
+                    <img class="app-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook">
+                    <span>Facebook Cá Nhân</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+        </div>
+
     </div>
 
-    <!-- KHU VỰC CÁC Ô MẠNG XÃ HỘI TÁCH RIÊNG -->
-    <div class="container">
-        <a href="#" class="box" target="_blank">TikTok</a>
-        <a href="#" class="box" target="_blank">Zalo</a>
-        <a href="#" class="box" target="_blank">Facebook</a>
-    </div>
-
-    <!-- NÚT PHÁT ĐOẠN NHẠC YÊU CẦU -->
-    <button class="music-btn" onclick="playSongSegment()">🎵 Bật Nhạc Hẹn Ngày Mai Yêu</button>
-
-    <!-- Trình phát nhạc ẩn xử lý đoạn thời gian yêu cầu -->
-    <audio id="bg-music" src="https://soundhelix.com"></audio>
+    <!-- HỆ THỐNG PHÁT NHẠC: Hẹn Ngày Mai Yêu (Đoạn điệp khúc cắt sẵn) -->
+    <audio id="app-track" src="https://r2.dev" preload="auto"></audio>
 
     <script>
-        function playSongSegment() {
-            const audio = document.getElementById('bg-music');
-            
-            // Nhắc lại: Bạn đổi đường dẫn src ở trên thành tên file nhạc máy bạn nếu muốn nghe đúng bài gốc nhé
-            const startTime = 68; // Bắt đầu: "Một ngày em về..."
-            const endTime = 95;   // Kết thúc: "...em chưa hề thương nhớ"
+        const audioTrack = document.getElementById('app-track');
+        const musicNode = document.getElementById('music-node');
 
-            audio.currentTime = startTime;
-            audio.play();
+        // Mốc thời gian chính xác của đoạn nhạc yêu cầu
+        const startPoint = 101; 
+        const endPoint = 127;   
 
-            audio.addEventListener('timeupdate', function() {
-                if (audio.currentTime >= endTime) {
-                    audio.pause();
-                }
-            });
+        function toggleAppMusic() {
+            if (audioTrack.paused) {
+                audioTrack.currentTime = startPoint;
+                audioTrack.play().then(() => {
+                    musicNode.innerHTML = "⏸ Dừng Nhạc Không Gian";
+                    musicNode.style.background = "#2ed573";
+                    musicNode.style.color = "#ffffff";
+                    musicNode.style.borderColor = "#2ed573";
+                    musicNode.style.boxShadow = "0 0 15px #2ed573";
+                }).catch(err => {
+                    alert("Trình duyệt yêu cầu tương tác trước khi phát nhạc!");
+                    console.log(err);
+                });
+            } else {
+                audioTrack.pause();
+                resetAppMusicUI();
+            }
         }
-    </script>
 
-</body>
-</html>
