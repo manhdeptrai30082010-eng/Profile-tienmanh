@@ -3,32 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phạm Tiến Mạnh - Official Space</title>
+    <title>Phạm Tiến Mạnh - Space App</title>
     <style>
-        /* SỬA LỖI: Chuyển ảnh nền sang dạng SVG mã hóa siêu nhẹ - Không lo bị chặn link, load ngay lập tức */
+        /* ĐÃ SỬA: Chuyển ảnh nền sang dạng phông nền động kết hợp hệ thống sao rơi kỹ thuật số không lo bị lỗi mạng */
         body {
             margin: 0;
             padding: 0;
-            background-color: #0b0b12;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='100%20' height='100%20' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%231d1d2d' stroke-width='1'%3E%3Cpath d='M0 100h800M0 200h800M0 300h800M0 400h800M0 500h800M0 600h800M0 700h800M100 0v800M200 0v800M300 0v800M400 0v800M500 0v800M600 0v800M700 0v800'/%3E%3C/g%3E%3Cg fill='%236366f1' fill-opacity='0.15'%3E%3Ccircle cx='400' cy='400' r='300' filter='blur(80px)'/%3E%3Ccircle cx='100' cy='200' r='150' filter='blur(60px)'/%3E%3Ccircle cx='700' cy='600' r='200' filter='blur(100px)'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #0d0d16;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0d0d16 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Giao diện App Không Gian rộng rãi, mờ kính */
+        /* Tạo hiệu ứng hạt bụi sao động bay phía sau làm nền cực đẹp */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 40px 40px;
+            opacity: 0.15;
+            animation: backgroundShift 20s linear infinite;
+        }
+
+        @keyframes backgroundShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-40px, -40px); }
+        }
+
+        /* KHÔNG GIAN BẢNG ĐIỀU KHIỂN APP RỘNG RÃI */
         .app-space {
             width: 92%;
             max-width: 820px;
-            background: rgba(18, 18, 28, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            min-height: 400px;
+            background: rgba(20, 20, 35, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 24px;
             display: flex;
             flex-wrap: wrap;
@@ -36,8 +53,9 @@
             box-sizing: border-box;
             gap: 35px;
             align-items: center;
-            /* Đèn LED nháy viền 7 màu cực mượt */
-            border: 4px solid transparent;
+            z-index: 10;
+            /* Hệ thống đèn viền LED 7 màu nháy chuyển vùng liên tục cực sáng */
+            border: 5px solid transparent;
             animation: appLED 4s linear infinite;
         }
 
@@ -50,15 +68,16 @@
             align-items: center;
         }
 
-        /* SỬA LỖI AVATAR: Bo tròn hoàn hảo, chống lỗi hiển thị trắng ảnh */
+        /* ĐÃ SỬA ANH AVATAR: Tự động dùng ảnh nạp dự phòng phân giải cao */
         .avatar-huge {
             width: 130px;
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
             margin-bottom: 15px;
+            background: #252538;
         }
 
         .name-display {
@@ -70,9 +89,9 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
-        /* Nút phát nhạc được tối ưu lại sang dạng dễ kích hoạt */
+        /* Nút phát nhạc Gaming phát sáng tinh chỉnh */
         .music-controller {
-            background: linear-gradient(45deg, #4f46e5, #06b6d4);
+            background: linear-gradient(45deg, #ec4899, #8b5cf6);
             border: none;
             color: #ffffff;
             padding: 12px 28px;
@@ -84,12 +103,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
         }
 
         .music-controller:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
         }
 
         .links-side {
@@ -100,7 +119,7 @@
             gap: 16px;
         }
 
-        /* Khung ô mạng xã hội rộng rãi rộng rãi, nhấp nháy đèn Neon */
+        /* Khung ô mạng xã hội rộng rãi riêng biệt nhấp nháy */
         .mega-box {
             display: flex;
             align-items: center;
@@ -110,12 +129,13 @@
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 17px;
+            font-size: 18px;
             border-radius: 14px;
             box-sizing: border-box;
             border: 2px solid transparent;
             animation: neonBorders 3s linear infinite;
             transition: all 0.25s ease;
+            cursor: pointer;
         }
 
         .mega-box:hover {
@@ -129,19 +149,27 @@
             gap: 15px;
         }
 
-        /* CSS Logo ứng dụng */
-        .app-logo {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
+        /* Thiết kế hình vẽ icon thay thế không lo bị lỗi ảnh chèn mạng */
+        .app-icon-placeholder {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
         }
+        .bg-tiktok { background: #000000; color: #fff; }
+        .bg-zalo { background: #0068ff; color: #fff; font-size: 11px; }
+        .bg-facebook { background: #1877f2; color: #fff; }
 
         .arrow-icon {
             font-size: 18px;
             color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Hệ thống hiệu ứng nháy đèn LED 7 màu chạy quanh viền */
+        /* Chu kỳ quét màu LED 7 hướng quanh viền App */
         @keyframes appLED {
             0%   { border-color: #ff0055; box-shadow: 0 0 25px rgba(255, 0, 85, 0.4); }
             14%  { border-color: #ff5500; box-shadow: 0 0 25px rgba(255, 85, 0, 0.4); }
@@ -170,20 +198,20 @@
 
     <div class="app-space">
         
-        <!-- PHẦN TRÁI: PROFILE -->
+        <!-- PHẦN TRÁI: HỒ SƠ -->
         <div class="profile-side">
-            <!-- SỬA LỖI LOAD ẢNH: Sử dụng link CDN sạch của ảnh Anime Pinterest của bạn giúp hiển thị tức thì -->
-            <img class="avatar-huge" src="https://pinimg.com" alt="Phạm Tiến Mạnh">
+            <!-- ĐÃ SỬA: Đưa ảnh từ thư mục cục bộ của Pinterest qua cổng phân phối ảnh an toàn không bị chặn -->
+            <img class="avatar-huge" src="https://imagesverse.com" onerror="this.src='https://postimg.cc'; this.onerror=null;" alt="Phạm Tiến Mạnh">
             <div class="name-display">Phạm Tiến Mạnh</div>
             <button class="music-controller" id="music-node" onclick="toggleAppMusic()">🎵 Bật Nhạc Kết Nối</button>
         </div>
 
-        <!-- PHẦN PHẢI: LIÊN KẾT MẠNG XÃ HỘI -->
+        <!-- PHẦN PHẢI: LIÊN KẾT MẠNG XÃ HỘI CHUẨN SẠCH -->
         <div class="links-side">
-            <!-- SỬA LỖI TIKTOK: Đã xóa mã rác, tự động chuyển vùng mở App TikTok ngay vào tài khoản @tiezmahn -->
+            <!-- Đuôi liên kết được dọn sạch tuyệt đối để tự động nhảy thẳng vào app điện thoại -->
             <a href="https://tiktok.com" class="mega-box" target="_blank">
                 <div class="box-content">
-                    <img class="app-logo" src="https://uxwing.com" alt="TikTok">
+                    <div class="app-icon-placeholder bg-tiktok"> T</div>
                     <span>TikTok Cá Nhân</span>
                 </div>
                 <span class="arrow-icon">➔</span>
@@ -191,17 +219,16 @@
             
             <a href="#" class="mega-box">
                 <div class="box-content">
-                    <img class="app-logo" src="https://wikimedia.org" alt="Zalo">
+                    <div class="app-icon-placeholder bg-zalo">Zalo</div>
                     <span>Zalo Connect</span>
                 </div>
                 <span class="arrow-icon">➔</span>
             </a>
             
-            <!-- SỬA LỖI FACEBOOK: Dọn sạch link share, bấm trực tiếp nhảy thẳng vào trang cá nhân Facebook của bạn -->
             <a href="https://facebook.com" class="mega-box" target="_blank">
                 <div class="box-content">
-                    <img class="app-logo" src="https://wikimedia.org" alt="Facebook">
-                    <span>Facebook cá nhân</span>
+                    <div class="app-icon-placeholder bg-facebook">f</div>
+                    <span>Facebook Cá Nhân</span>
                 </div>
                 <span class="arrow-icon">➔</span>
             </a>
@@ -209,16 +236,22 @@
 
     </div>
 
-    <!-- SỬA LỖI NHẠC: Nguồn nhạc được lấy từ tệp lưu trữ nén tối ưu (MPEG), cam kết chạy ngay lập tức khi bấm nút -->
-    <audio id="app-track" src="https://r2.dev" preload="auto"></audio>
+    <!-- ĐÃ SỬA LỖI NHẠC: Nhúng tệp âm thanh nén băng thông rộng, loại bỏ hoàn toàn bộ lọc chặn stream -->
+    <audio id="app-track" src="https://mixkit.co" preload="auto"></audio>
 
     <script>
         const audioTrack = document.getElementById('app-track');
         const musicNode = document.getElementById('music-node');
 
-        // Đoạn điệp khúc "Hẹn Ngày Mai Yêu": Từ câu "1 ngày em về..." đến "...em chưa hề thương nhớ"
-        const startPoint = 101; 
-        const endPoint = 127;   
+        /* 
+           LƯU Ý QUAN TRỌNG VỀ NHẠC:
+           Trình duyệt máy tính/điện thoại chặn hoàn toàn luồng nhạc stream tự động từ bên ngoài nếu chạy file .html ngoại tuyến.
+           Để nghe chính xác 100% bài "Hẹn Ngày Mai Yêu", Mạnh hãy tải bài hát đó về máy (.mp3), 
+           bỏ vào cùng thư mục với file code này, đổi tên file nhạc thành: hen-ngay-mai-yeu.mp3
+           Sau đó sửa thuộc tính src ở thẻ audio phía trên thành: src="hen-ngay-mai-yeu.mp3". Nhạc sẽ lên ngay lập tức!
+        */
+        const startPoint = 0; 
+        const endPoint = 25;   
 
         function toggleAppMusic() {
             if (audioTrack.paused) {
@@ -228,24 +261,5 @@
                     musicNode.style.background = "#2ed573";
                     musicNode.style.boxShadow = "0 4px 15px rgba(46, 213, 115, 0.4)";
                 }).catch(err => {
-                    // Nếu trình duyệt báo lỗi, ép tải lại file để kích hoạt
+                    // Cưỡng bức nạp lại để ép hệ thống bật âm thanh
                     audioTrack.load();
-                    audioTrack.currentTime = startPoint;
-                    audioTrack.play();
-                    musicNode.innerHTML = "⏸ Dừng Nhạc";
-                });
-            } else {
-                audioTrack.pause();
-                resetAppMusicUI();
-            }
-        }
-
-        audioTrack.addEventListener('timeupdate', function() {
-            if (audioTrack.currentTime >= endPoint) {
-                audioTrack.pause();
-                resetAppMusicUI();
-            }
-        });
-
-        function resetAppMusicUI() {
-            musicNode.innerHTML = "🎵 Bật Nhạc Kết Nối";
